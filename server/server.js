@@ -13,6 +13,7 @@ app.get('*', (req, res) => {
 
   let html = `
   <div id="root">${application}</div>
+  <script src="http://localhost:3001/client.js"></script>
   `
 
   res.send(html)

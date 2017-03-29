@@ -1,11 +1,15 @@
-import { buildSchema } from 'graphql'
+import { makeExecutableSchema } from 'graphql-tools'
 
-export const schema = buildSchema(`
+export const typeDefs = `
 type Query {
   hello: String
 }
-`)
+`
 
-export const rootValue = {
-  hello: () => 'Hello world'
+export const resolvers = {
+  Query: {
+    hello: () => 'Hello world'
+  }
 }
+
+export const schema = makeExecutableSchema({ typeDefs, resolvers })

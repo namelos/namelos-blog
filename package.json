@@ -18,6 +18,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
+    "react-router-dom": "^4.0.0",
     "start-server-webpack-plugin": "^2.1.2",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2",

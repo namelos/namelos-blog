@@ -1,5 +1,11 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
-const App = () => <h2>Hi.</h2>
+const Root = () => <h1>Hi...</h1>
+
+const App = () =>
+  <BrowserRouter>
+    <Root />
+  </BrowserRouter>
 
 export default App

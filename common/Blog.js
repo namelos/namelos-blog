@@ -8,12 +8,14 @@ query Issues {
       issues(first: 100) {
         edges {
           node {
+            id
             title
             body
             comments(first: 100) {
               edges {
                 node {
                   id
+                  body
                 }
               }
             }
@@ -24,18 +26,27 @@ query Issues {
   }
 }
 `
-
-let Post = ({ post }) => <li>
-  <p>{post.title}</p>
-  <p>{post.body}</p>
+const Comment = ({ comment }) => <li>
+  <p>{comment.body}</p>
 </li>
 
-let Posts = ({ posts }) => <ul>
-  { posts.map((post, i) => <Post post={post.node} key={i} />)}
+const Comments = ({ comments }) => <ul>
+  { comments.edges.map(comment =>
+    <Comment comment={comment.node} key={comment.node.id} /> ) }
 </ul>
 
-let Blog = ({ data }) => <div>
-  { data.viewer && <Posts posts={data.viewer.repository.issues.edges}/> }
+const Post = ({ post }) => <li>
+  <p>{post.title}</p>
+  <p>{post.body}</p>
+  <Comments comments={post.comments} />
+</li>
+
+const Posts = ({ posts }) => <ul>
+  { posts.edges.map(post => <Post post={post.node} key={post.node.id} />)}
+</ul>
+
+const Blog = ({ data }) => <div>
+  { data.viewer && <Posts posts={data.viewer.repository.issues}/> }
 </div>
 
 export default graphql(schema)(Blog)

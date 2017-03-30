@@ -1,11 +1,22 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { ApolloProvider, gql, graphql } from 'react-apollo'
+import { client } from './apolloClient'
 
-const Root = () => <h1>Hi...</h1>
+const schema = gql`
+  query name { 
+    viewer { name }
+  }
+`
+
+let Root = () => <h1>Hi...</h1>
+Root = graphql(schema)(Root)
 
 const App = () =>
-  <BrowserRouter>
-    <Root />
-  </BrowserRouter>
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <Root />
+    </BrowserRouter>
+  </ApolloProvider>
 
 export default App

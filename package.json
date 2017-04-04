@@ -4,9 +4,9 @@
   "main": "server/server.js",
   "license": "MIT",
   "scripts": {
-    "start:server": "rm -rf ./.build && webpack --config webpack.config.server.js",
+    "start:server": "rimraf ./.build && webpack --config webpack.config.server.js",
     "start:client": "webpack-dev-server --config webpack.config.client.js",
-    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client"
+    "start": "rimraf ./.build && npm-run-all --parallel start:server start:client"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -26,6 +26,7 @@
     "react-hot-loader": "next",
     "react-router-dom": "^4.0.0",
     "redux": "^3.6.0",
+    "rimraf": "^2.6.1",
     "start-server-webpack-plugin": "^2.1.2",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2",

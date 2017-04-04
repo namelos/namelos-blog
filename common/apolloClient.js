@@ -1,4 +1,5 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo'
+import { token } from './config'
 
 const networkInterface =
   createNetworkInterface({ uri: 'https://api.github.com/graphql' })
@@ -6,7 +7,7 @@ const networkInterface =
 networkInterface.use([{
   applyMiddleware(req, next) {
     if (!req.options.headers) req.options.headers = {}
-    req.options.headers.Authorization = ''
+    req.options.headers.Authorization = token
     next()
   }
 }])
